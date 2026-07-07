@@ -1,0 +1,34 @@
+pipeline{
+    agent{
+        label 'linux-agent'
+    }
+        stages{
+            stage ('satge 1 - Build'){
+                steps{
+                    echo 'Building application...'
+                }
+            }
+            stage ('stage 2 - Test'){
+                steps{
+                    echo 'Running tests...'
+                }
+            }
+            stage ('stage 3 - Deploy'){
+                steps{
+                    echo 'Deploying application...'
+                }
+            }
+        }
+    
+    post{
+        always{
+            echo "pipeline execution completed"
+        }
+        success{
+            echo "pipline executed successfully"
+        }
+        failure{
+            echo "pipeline execution failed"
+        }
+    }
+}
