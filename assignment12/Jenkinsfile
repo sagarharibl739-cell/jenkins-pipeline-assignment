@@ -1,0 +1,41 @@
+pipeline{
+    agent any
+        stages{
+		    stage ('stage 1 - Checkout'){
+			    steps{
+			        echo 'Executing stage 01'
+				    echo 'Checking out source code...'
+				}
+			}
+            stage ('satge 2 - Build'){
+                steps{
+                    echo 'Executing stage 02'
+                    echo 'Building application...'
+                }
+            }
+            stage ('stage 3 - Test'){
+                steps{
+                    echo 'Executing stage 03'
+                    echo 'Running tests...'
+                }
+            }
+            stage ('stage 4 - Deploy'){
+                steps{
+                    echo 'Executing stage 04'
+                    echo 'Deploying application...'
+                }
+            }
+        }
+    
+    post{
+        always{
+            echo "pipeline execution completed"
+        }
+        success{
+            echo "pipline executed successfully"
+        }
+        failure{
+            echo "pipeline execution failed"
+        }
+    }
+}
