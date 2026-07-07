@@ -1,0 +1,32 @@
+pipeline{
+    agent{
+        label 'linux-agent'
+    }
+    
+    parameters {
+        string(
+            name: 'COURSENAME',
+            defaultValue: 'Devops',
+            description: 'Enter coursename'
+        )
+    }
+    
+    stages{
+        stage ('Parameter'){
+            steps{
+                echo "Coursename: ${params.COURSENAME}"
+            }
+        }
+    }
+    post{
+        always{
+            echo "pipeline execution completed"
+        }
+        success{
+            echo "pipline executed successfully"
+        }
+        failure{
+            echo "pipeline execution failed"
+        }
+    }
+}
