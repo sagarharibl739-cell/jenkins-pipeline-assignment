@@ -1,0 +1,28 @@
+pipeline{
+    agent{
+        label 'linux-agent'
+    }
+    
+    environment{
+        TOOL = 'Jenkins'
+    }
+    
+    stages{
+        stage ('Environment'){
+            steps{
+                echo "Learning tool : ${TOOL}"
+            }
+        }
+    }
+    post{
+        always{
+            echo "pipeline execution completed"
+        }
+        success{
+            echo "pipline executed successfully"
+        }
+        failure{
+            echo "pipeline execution failed"
+        }
+    }
+}
