@@ -1,0 +1,24 @@
+pipeline{
+    agent{
+        label 'linux-agent'
+    }
+    stages{
+        stage ('Display Hostname'){
+            steps{
+                sh 'hostname'
+            }
+        }
+    }
+    post{
+        always{
+            echo "pipeline execution completed"
+        }
+        success{
+            echo "pipline executed successfully"
+            echo "Hostname displayed successfully"
+        }
+        failure{
+            echo "pipeline execution failed"
+        }
+    }
+}
