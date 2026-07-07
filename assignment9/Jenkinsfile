@@ -1,0 +1,23 @@
+pipeline{
+    agent{
+        label 'linux-agent'
+    }
+    stages{
+        stage ('Display Current User'){
+            steps{
+                sh 'whoami'
+            }
+        }
+    }
+    post{
+        always{
+            echo "pipeline execution completed"
+        }
+        success{
+            echo "pipline executed successfully"
+        }
+        failure{
+            echo "pipeline execution failed"
+        }
+    }
+}
