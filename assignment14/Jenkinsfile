@@ -1,0 +1,28 @@
+pipeline{
+    agent{
+        label 'linux-agent'
+    }
+    stages{
+        stage ('Run Shellscript with sh'){
+            steps{
+                sh '''
+                     echo "Hostname: $(hostname)"
+                     echo "Presend working directory: $(pwd)"
+                     echo "Current date: $(date)"
+                     echo "Current User: $(whoami)"
+                '''
+            }
+        }
+    }
+    post{
+        always{
+            echo "pipeline execution completed"
+        }
+        success{
+            echo "pipline executed successfully"
+        }
+        failure{
+            echo "pipeline execution failed"
+        }
+    }
+}
